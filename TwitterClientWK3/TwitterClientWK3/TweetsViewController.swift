@@ -26,7 +26,7 @@ class TweetsViewController: UIViewController {
         
         refreshControl = UIRefreshControl()
         refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl!.addTarget(self, action: #selector(refreshControlAction), for: UIControlEvents.valueChanged)
+        refreshControl!.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
         tableView.addSubview(refreshControl!)
         
         fetchTweets()
@@ -41,8 +41,14 @@ class TweetsViewController: UIViewController {
         }
     }
     
-    func refreshControlAction() {
-        fetchTweets()
+    func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        TwitterClient.sharedInstance?.getHomeTimeline(success: { (tweets) in
+            self.tweets = tweets
+            self.tableView.reloadData()
+        }) { (error) in
+            print(error)
+        }
+        refreshControl.endRefreshing()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,18 +84,11 @@ extension TweetsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell") as! TweetCell
-        let tweet = tweets![indexPath.row]
         
-        cell.tweetLabel.text = tweet.tweet
-        
-        if let timestamp = tweet.time {
-            cell.timeLabel.text = tweet.timeAgoSince(timestamp)
+        if tweets != nil {
+            cell.tweet = tweets?[indexPath.row]
+            cell.selectionStyle = .none
         }
-        
-        cell.usernameLabel.text = tweet.user?.name
-        
-        cell.profileImageView.setImageWith((tweet.user?.profileUrl)!, placeholderImage: nil)
-        
         return cell
     }
 }

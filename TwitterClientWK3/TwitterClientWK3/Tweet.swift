@@ -8,21 +8,32 @@
 
 import Foundation
 class Tweet {
-    var profileUrl: URL?
-    var username: String?
-    var time: Date?
-    var tweet: String?
     var user: User?
+    var createdAt: Date?
+    var tweetText: String?
+    var retweetCount: Int?
+    var favoriteCount: Int?
+    var id: Int?
+    var retweeted: Bool?
+    var favorited: Bool?
     
     init(dictionary: NSDictionary) {
         user = User(dictionary: dictionary["user"] as! NSDictionary)
         
-        let timeString = dictionary["created_at"] as? String
-        if let timeString = timeString {
+        if let timestampUnformatted = dictionary["created_at"] as? String {
             let formatter = DateFormatter()
             formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
-            time = formatter.date(from: timeString)
+            createdAt = formatter.date(from: timestampUnformatted)
         }
+        
+        tweetText = (dictionary["text"] as? String)!
+        retweetCount = dictionary["retweet_count"] as? Int ?? 0
+        favoriteCount = dictionary["favorite_count"] as? Int ?? 0
+        
+        id = dictionary["id"] as? Int
+        retweeted = dictionary["retweeted"] as? Bool
+        favorited = dictionary["favorited"] as? Bool
+        
     }
     
     class func tweetsWithArray(_ dictionaries: [NSDictionary]) -> [Tweet] {

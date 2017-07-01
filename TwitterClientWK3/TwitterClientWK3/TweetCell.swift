@@ -9,11 +9,31 @@
 import UIKit
 
 class TweetCell: UITableViewCell {
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userHandle: UILabel!
+    @IBOutlet weak var tweetTimestamp: UILabel!
+    @IBOutlet weak var tweetText: UILabel!
+    @IBOutlet weak var retweetCount: UILabel!
+    @IBOutlet weak var favoritesCount: UILabel!
+    // User to update image displayed
+    @IBOutlet weak var retweetButton: UIButton!
+    @IBOutlet weak var favoritesButton: UIButton!
+    
+    var tweet: Tweet! {
+        didSet {
+            userImage.setImageWith((tweet.user?.profileImageURL!)!)
+            userImage.layer.cornerRadius = 3
+            userImage.clipsToBounds = true
+            userName.text = tweet.user?.name
+            userHandle.text = tweet.user?.handle
+            tweetTimestamp.text = tweet.timeAgoSince(tweet.createdAt!)
+            tweetText.text = tweet.tweetText
+            retweetCount.text = "\(tweet.retweetCount!)"
+            favoritesCount.text = "\(tweet.favoriteCount!)"
+        }
+    }
 
-    @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var tweetLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

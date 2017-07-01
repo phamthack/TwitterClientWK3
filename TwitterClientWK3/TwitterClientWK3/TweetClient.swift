@@ -53,27 +53,22 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
     
     func login(success: @escaping () -> (), failure: @escaping (Error) -> ()) {
-        
         loginSuccess = success
         loginFailure = failure
         
+        // Logout from any previous sessions before attempting to login again to prevent issues
         TwitterClient.sharedInstance?.deauthorize()
         
-        TwitterClient.sharedInstance?.fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: URL(string: "twitterclientWK3://oauth"), scope: nil, success: { (response: BDBOAuth1Credential!) -> Void in
+        TwitterClient.sharedInstance?.fetchRequestToken(withPath: "oauth/request_token", method: "GET", callbackURL: URL(string: "twitterclientWK3://oauth"), scope: nil, success: { (requestToken: BDBOAuth1Credential?) -> Void in
             print("I got a token")
-            if let response = response {
-                self.loginSuccess?()
-                print(response.token)
-                
-                let authURL = URL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(response.token!)")
-                
-                UIApplication.shared.open(authURL!, options: [:], completionHandler: nil)
-            }
+            // Open Safari with url using requestToken
+            let url = URL(string: "https://api.twitter.com/oauth/authorize?oauth_token=\(requestToken!.token!)")
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
             
-        }, failure: { (error: (Error!)) in
-            self.loginFailure?(error)
-            
-        })
+        }) { (error: Error?) -> Void in
+            print("error: \(error?.localizedDescription)")
+            self.loginFailure?(error!)
+        }
     }
     
     func getHomeTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> () ) {
