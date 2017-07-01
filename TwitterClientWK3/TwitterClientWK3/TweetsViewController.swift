@@ -20,20 +20,25 @@ class TweetsViewController: UIViewController {
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 120
+        
         refreshControl = UIRefreshControl()
         refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl!.addTarget(self, action: #selector(refreshControlAction), for: UIControlEvents.valueChanged)
+        tableView.addSubview(refreshControl!)
         
+        fetchTweets()
     }
     
     func fetchTweets() {
-        TwitterClient.sharedInstance?.homeTimeline({ (tweets: [Tweet]) in
+        TwitterClient.sharedInstance?.getHomeTimeline(success: { (tweets) in
             self.tweets = tweets
             self.tableView.reloadData()
-            if (self.refreshControl != nil) {
-                self.refreshControl!.endRefreshing()
-            }
-        }, failure: nil)
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
     
     func refreshControlAction() {
