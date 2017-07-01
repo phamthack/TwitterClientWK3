@@ -60,6 +60,10 @@ class TweetsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onSignOutTapped(_ sender: UIBarButtonItem) {
+        User.currentUser?.logout()
+    }
+    
 
     /*
     // MARK: - Navigation
