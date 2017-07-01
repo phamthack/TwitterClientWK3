@@ -54,7 +54,7 @@ class Tweet {
         let components = (calendar as NSCalendar).components(unitFlags, from: date, to: now, options: [])
         
         if components.year! >= 2 {
-            return "\(components.year)y"
+            return "\(String(describing: components.year!))y"
         }
         
         if components.year! >= 1 {
@@ -62,7 +62,7 @@ class Tweet {
         }
         
         if components.month! >= 2 {
-            return "\(components.month)m"
+            return "\(String(describing: components.month!))m"
         }
         
         if components.month! >= 1 {
@@ -70,7 +70,7 @@ class Tweet {
         }
         
         if components.weekOfYear! >= 2 {
-            return "\(components.weekOfYear)w"
+            return "\(String(describing: components.weekOfYear!))w"
         }
         
         if components.weekOfYear! >= 1 {
@@ -78,7 +78,7 @@ class Tweet {
         }
         
         if components.day! >= 2 {
-            return "\(components.day)d"
+            return "\(String(describing: components.day!))d"
         }
         
         if components.day! >= 1 {
@@ -86,7 +86,7 @@ class Tweet {
         }
         
         if components.hour! >= 2 {
-            return "\(components.hour)h"
+            return "\(String(describing: components.hour!))h"
         }
         
         if components.hour! >= 1 {
@@ -94,7 +94,7 @@ class Tweet {
         }
         
         if components.minute! >= 2 {
-            return "\(components.minute)m"
+            return "\(String(describing: components.minute!))mi"
         }
         
         if components.minute! >= 1 {
@@ -102,7 +102,7 @@ class Tweet {
         }
         
         if components.second! >= 2 {
-            return "\(components.second)s"
+            return "\(String(describing: components.second!))s"
         }
         
         return "1s"
