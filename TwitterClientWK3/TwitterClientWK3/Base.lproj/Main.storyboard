@@ -208,7 +208,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New" id="Ytu-CX-rOL">
                             <connections>
-                                <segue destination="Hap-6v-fAh" kind="show" identifier="tweetComposeSeque" id="2fq-s8-EUl"/>
+                                <segue destination="Hap-6v-fAh" kind="presentation" identifier="tweetComposeSeque" id="2fq-s8-EUl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -400,7 +400,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="reply"/>
                                 <connections>
-                                    <segue destination="Hap-6v-fAh" kind="show" identifier="tweetReplySeque" id="TIr-Iy-JkZ"/>
+                                    <segue destination="Hap-6v-fAh" kind="presentation" identifier="tweetReplySeque" id="TIr-Iy-JkZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jFI-UJ-GH0">
@@ -508,6 +508,6 @@
         <image name="retweet_on" width="72" height="72"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2fq-s8-EUl"/>
+        <segue reference="TIr-Iy-JkZ"/>
     </inferredMetricsTieBreakers>
 </document>
