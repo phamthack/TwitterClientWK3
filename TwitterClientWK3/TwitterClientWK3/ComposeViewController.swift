@@ -33,8 +33,8 @@ class ComposeViewController: UIViewController {
         profileImageView.layer.cornerRadius = 3
         profileImageView.clipsToBounds = true
         tweetButton.layer.cornerRadius = 5
-        usernameLabel.text = tweet?.user?.name
-        userHandleLabel.text = tweet?.user?.handle
+        usernameLabel.text = User._currentUser?.name
+        userHandleLabel.text = User._currentUser?.handle
         
         if (isReply) == true {
             composeTextView.text = "@\((tweet?.user?.handle)!) "
