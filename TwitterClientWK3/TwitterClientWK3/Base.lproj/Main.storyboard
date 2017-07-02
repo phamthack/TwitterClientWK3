@@ -234,12 +234,6 @@
                                     <action selector="tweetTapped:" destination="Hap-6v-fAh" eventType="touchUpInside" id="nv6-sY-Rb5"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYe-pJ-PF2">
-                                <rect key="frame" x="249" y="32.5" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.7100055520304569" green="0.7100055520304569" blue="0.7100055520304569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vDi-eT-0WB">
                                 <rect key="frame" x="8" y="66" width="40" height="40"/>
                                 <constraints>
@@ -268,20 +262,35 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceP-Mn-5zD">
+                                <rect key="frame" x="8" y="28" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="onCancel:" destination="Hap-6v-fAh" eventType="touchUpInside" id="Npw-HJ-fUd"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYe-pJ-PF2">
+                                <rect key="frame" x="325" y="85" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.7100055520304569" green="0.7100055520304569" blue="0.7100055520304569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ceP-Mn-5zD" firstAttribute="leading" secondItem="BIM-5O-fW5" secondAttribute="leading" constant="8" id="2DH-bt-pt5"/>
+                            <constraint firstItem="vDi-eT-0WB" firstAttribute="top" secondItem="ceP-Mn-5zD" secondAttribute="bottom" constant="8" id="34i-n6-IAW"/>
                             <constraint firstItem="ggO-3r-Ynn" firstAttribute="leading" secondItem="Ped-5c-ici" secondAttribute="leading" id="3ko-iB-pmW"/>
                             <constraint firstItem="Ped-5c-ici" firstAttribute="top" secondItem="vDi-eT-0WB" secondAttribute="top" id="8dD-c0-NAy"/>
                             <constraint firstItem="yKT-M2-LOd" firstAttribute="top" secondItem="V1y-5M-HUa" secondAttribute="bottom" constant="8" id="Cgh-pd-hh7"/>
+                            <constraint firstItem="oYe-pJ-PF2" firstAttribute="top" secondItem="yKT-M2-LOd" secondAttribute="bottom" constant="27" id="JSn-lQ-PMr"/>
                             <constraint firstItem="ggO-3r-Ynn" firstAttribute="top" secondItem="Ped-5c-ici" secondAttribute="bottom" constant="-2" id="KRd-cX-hWS"/>
-                            <constraint firstItem="vDi-eT-0WB" firstAttribute="top" secondItem="V1y-5M-HUa" secondAttribute="bottom" constant="46" id="KZO-qt-tF7"/>
-                            <constraint firstItem="yKT-M2-LOd" firstAttribute="leading" secondItem="oYe-pJ-PF2" secondAttribute="trailing" constant="34" id="LCp-8E-dMw"/>
+                            <constraint firstAttribute="trailing" secondItem="oYe-pJ-PF2" secondAttribute="trailing" constant="8" id="OGN-AA-gXx"/>
                             <constraint firstAttribute="trailing" secondItem="yKT-M2-LOd" secondAttribute="trailing" constant="8" id="Tgz-63-5GB"/>
                             <constraint firstItem="jxZ-xi-wT7" firstAttribute="top" secondItem="vDi-eT-0WB" secondAttribute="bottom" constant="8" id="XmZ-j4-NO9"/>
                             <constraint firstItem="Ped-5c-ici" firstAttribute="leading" secondItem="vDi-eT-0WB" secondAttribute="trailing" constant="8" id="a1W-hy-lZu"/>
                             <constraint firstItem="vDi-eT-0WB" firstAttribute="leading" secondItem="BIM-5O-fW5" secondAttribute="leading" constant="8" id="cav-RV-yR9"/>
-                            <constraint firstItem="yKT-M2-LOd" firstAttribute="centerY" secondItem="oYe-pJ-PF2" secondAttribute="centerY" id="qQr-Yg-C1z"/>
+                            <constraint firstItem="ceP-Mn-5zD" firstAttribute="top" secondItem="V1y-5M-HUa" secondAttribute="bottom" constant="8" id="gpg-Nd-t2T"/>
                             <constraint firstAttribute="trailing" secondItem="jxZ-xi-wT7" secondAttribute="trailing" constant="8" id="taj-aY-BOm"/>
                             <constraint firstItem="jxZ-xi-wT7" firstAttribute="leading" secondItem="vDi-eT-0WB" secondAttribute="leading" id="wQp-FG-yAQ"/>
                         </constraints>
