@@ -49,8 +49,7 @@ class TweetsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tableView.insertSubview(refreshControl!, at: 0)
-        tableView.reloadData()
+        fetchTweets()
 
     }
     
