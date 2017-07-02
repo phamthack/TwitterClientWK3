@@ -38,7 +38,6 @@ class ComposeViewController: UIViewController {
         
         if (isReply) == true {
             composeTextView.text = "@\((tweet?.user?.handle)!) "
-            isReply = false
         }
         characterCount.text = "\(140 - composeTextView.text!.characters.count)"
     }
