@@ -32,6 +32,21 @@ class TweetCell: UITableViewCell {
             tweetText.text = tweet.tweetText
             retweetCount.text = "\(tweet.retweetCount!)"
             favoritesCount.text = "\(tweet.favoriteCount!)"
+            let retweeted = tweet.retweeted
+            
+            if retweeted == false {
+                retweetButton.setImage(UIImage(named: "retweet_off"), for: UIControlState())
+            } else if retweeted ==  true {
+                retweetButton.setImage(UIImage(named: "retweet_on"), for: UIControlState())
+            }
+            let favorited = tweet.favorited
+            
+            if favorited == false {
+                favoritesButton.setImage(UIImage(named: "like_off"), for: UIControlState())
+            } else if favorited ==  true {
+                favoritesButton.setImage(UIImage(named: "like_on"), for: UIControlState())
+            }
+
         }
     }
 

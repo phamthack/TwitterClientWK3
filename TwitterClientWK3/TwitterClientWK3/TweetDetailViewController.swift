@@ -35,6 +35,20 @@ class TweetDetailViewController: UIViewController {
         timeLabel.text = tweet?.timeAgoSince((tweet!.createdAt)!)
         retweetCountLabel.text = "\(tweet!.retweetCount!)"
         favoritesCountLabel.text = "\(tweet!.favoriteCount!)"
+        let retweeted = tweet!.retweeted
+        
+        if retweeted == false {
+            self.retweetButton.setImage(UIImage(named: "retweet_off"), for: UIControlState())
+        } else if retweeted ==  true {
+            self.retweetButton.setImage(UIImage(named: "retweet_on"), for: UIControlState())
+        }
+        let favorited = tweet!.favorited
+        
+        if favorited == false {
+            self.favoritesButton.setImage(UIImage(named: "like_off"), for: UIControlState())
+        } else if favorited ==  true {
+            self.favoritesButton.setImage(UIImage(named: "like_on"), for: UIControlState())
+        }
     }
 
     override func didReceiveMemoryWarning() {

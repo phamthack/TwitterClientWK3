@@ -50,6 +50,8 @@ class TweetsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.insertSubview(refreshControl!, at: 0)
+        tableView.reloadData()
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -149,7 +151,9 @@ extension TweetsViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell") as! TweetCell
         
         if tweets != nil {
-            cell.tweet = tweets?[indexPath.row]
+            let tweet = tweets?[indexPath.row]
+            cell.tweet = tweet
+            
             cell.selectionStyle = .none
         }
         return cell
