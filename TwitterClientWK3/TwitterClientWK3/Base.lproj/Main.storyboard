@@ -232,13 +232,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6M-dB-9DN">
-                                <rect key="frame" x="8" y="72" width="48" height="30"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="onCancel:" destination="Hap-6v-fAh" eventType="touchUpInside" id="OKd-V4-XgS"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yKT-M2-LOd">
                                 <rect key="frame" x="325" y="72" width="42" height="30"/>
                                 <state key="normal" title="Tweet"/>
@@ -283,22 +276,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vDi-eT-0WB" firstAttribute="top" secondItem="W6M-dB-9DN" secondAttribute="bottom" constant="8" id="1un-yA-O9a"/>
                             <constraint firstItem="ggO-3r-Ynn" firstAttribute="leading" secondItem="Ped-5c-ici" secondAttribute="leading" id="3ko-iB-pmW"/>
                             <constraint firstItem="Ped-5c-ici" firstAttribute="top" secondItem="vDi-eT-0WB" secondAttribute="top" id="8dD-c0-NAy"/>
                             <constraint firstItem="yKT-M2-LOd" firstAttribute="top" secondItem="V1y-5M-HUa" secondAttribute="bottom" constant="8" id="Cgh-pd-hh7"/>
-                            <constraint firstItem="oYe-pJ-PF2" firstAttribute="centerY" secondItem="W6M-dB-9DN" secondAttribute="centerY" id="EmF-f4-Xhq"/>
                             <constraint firstItem="ggO-3r-Ynn" firstAttribute="top" secondItem="Ped-5c-ici" secondAttribute="bottom" constant="-2" id="KRd-cX-hWS"/>
+                            <constraint firstItem="vDi-eT-0WB" firstAttribute="top" secondItem="V1y-5M-HUa" secondAttribute="bottom" constant="46" id="KZO-qt-tF7"/>
                             <constraint firstItem="yKT-M2-LOd" firstAttribute="leading" secondItem="oYe-pJ-PF2" secondAttribute="trailing" constant="34" id="LCp-8E-dMw"/>
                             <constraint firstAttribute="trailing" secondItem="yKT-M2-LOd" secondAttribute="trailing" constant="8" id="Tgz-63-5GB"/>
                             <constraint firstItem="jxZ-xi-wT7" firstAttribute="top" secondItem="vDi-eT-0WB" secondAttribute="bottom" constant="8" id="XmZ-j4-NO9"/>
                             <constraint firstItem="Ped-5c-ici" firstAttribute="leading" secondItem="vDi-eT-0WB" secondAttribute="trailing" constant="8" id="a1W-hy-lZu"/>
-                            <constraint firstItem="vDi-eT-0WB" firstAttribute="leading" secondItem="W6M-dB-9DN" secondAttribute="leading" id="hh5-5j-nt0"/>
+                            <constraint firstItem="vDi-eT-0WB" firstAttribute="leading" secondItem="BIM-5O-fW5" secondAttribute="leading" constant="8" id="cav-RV-yR9"/>
                             <constraint firstItem="yKT-M2-LOd" firstAttribute="centerY" secondItem="oYe-pJ-PF2" secondAttribute="centerY" id="qQr-Yg-C1z"/>
                             <constraint firstAttribute="trailing" secondItem="jxZ-xi-wT7" secondAttribute="trailing" constant="8" id="taj-aY-BOm"/>
-                            <constraint firstItem="W6M-dB-9DN" firstAttribute="top" secondItem="V1y-5M-HUa" secondAttribute="bottom" constant="8" id="wH0-Tt-GDi"/>
                             <constraint firstItem="jxZ-xi-wT7" firstAttribute="leading" secondItem="vDi-eT-0WB" secondAttribute="leading" id="wQp-FG-yAQ"/>
-                            <constraint firstItem="W6M-dB-9DN" firstAttribute="leading" secondItem="BIM-5O-fW5" secondAttribute="leading" constant="8" id="za1-Vt-v6z"/>
                         </constraints>
                     </view>
                     <connections>
@@ -518,6 +508,6 @@
         <image name="retweet_on" width="72" height="72"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TIr-Iy-JkZ"/>
+        <segue reference="2fq-s8-EUl"/>
     </inferredMetricsTieBreakers>
 </document>

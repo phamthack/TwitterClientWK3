@@ -62,10 +62,6 @@ class ComposeViewController: UIViewController {
         }
     }
     
-    @IBAction func onCancel(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: {});
-    }
-
     /*
     // MARK: - Navigation
 

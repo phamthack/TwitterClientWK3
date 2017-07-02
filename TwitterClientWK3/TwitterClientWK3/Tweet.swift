@@ -8,6 +8,7 @@
 
 import Foundation
 class Tweet {
+    
     var user: User?
     var createdAt: Date?
     var tweetText: String?
@@ -46,6 +47,7 @@ class Tweet {
         return tweets
     }
     
+    // Reference CodepathDemo
     func timeAgoSince(_ date: Date) -> String {
         
         let calendar = Calendar.current
@@ -108,5 +110,4 @@ class Tweet {
         return "1s"
         
     }
-
 }

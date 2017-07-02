@@ -8,11 +8,11 @@
 
 import Foundation
 class User {
+    
     var name: String?
     var handle: String?
     var tagline: String?
     var profileImageURL: URL?
-    var bannerImageURL: URL?
     var tagLine: String?
     var followerCount: Int?
     var followingCount: Int?
@@ -30,11 +30,6 @@ class User {
             profileImageURL = URL(string: profileImageString!)
         }
         
-        let bannerImageString = dictionary["profile_background_image_url_https"] as? String
-        if bannerImageString != nil {
-            bannerImageURL = URL(string: bannerImageString!)!
-        }
-        
         followerCount = dictionary["followers_count"] as? Int
         followingCount = dictionary["friends_count"] as? Int
     }
@@ -47,12 +42,9 @@ class User {
             if _currentUser == nil {
                 
                 let defaults = UserDefaults.standard
-                let userData = defaults.object(forKey: "currentUserKey") as? Data
-                
-                if let userData = userData {
-                    
-                    let dictionary = try! JSONSerialization.jsonObject(with: userData, options: .allowFragments)
-                    
+                let currentUserData = defaults.object(forKey: "currentUserKey") as? Data
+                if let currentUserData = currentUserData {
+                    let dictionary = try! JSONSerialization.jsonObject(with: currentUserData, options: .allowFragments)
                     _currentUser = User(dictionary: dictionary as! NSDictionary)
                 }
             }

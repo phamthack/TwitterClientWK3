@@ -9,6 +9,7 @@
 import UIKit
 
 class TweetCell: UITableViewCell {
+    
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userHandle: UILabel!
@@ -16,7 +17,7 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var tweetText: UILabel!
     @IBOutlet weak var retweetCount: UILabel!
     @IBOutlet weak var favoritesCount: UILabel!
-    // User to update image displayed
+    
     @IBOutlet weak var retweetButton: UIButton!
     @IBOutlet weak var favoritesButton: UIButton!
     
