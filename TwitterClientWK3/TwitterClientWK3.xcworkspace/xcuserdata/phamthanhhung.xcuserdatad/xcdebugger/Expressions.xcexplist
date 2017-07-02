@@ -10,5 +10,21 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "TweetDetailViewController.viewDidLoad() -&gt; ():TweetDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "tweet">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "TweetsViewController.onRetweet(UIButton) -&gt; ():TweetsViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

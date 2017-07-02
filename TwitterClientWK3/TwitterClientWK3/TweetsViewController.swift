@@ -21,9 +21,6 @@ class TweetsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-//        tableView.rowHeight = UITableViewAutomaticDimension
-//        tableView.estimatedRowHeight = 120
-        
         refreshControl = UIRefreshControl()
         refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl!.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
@@ -64,17 +61,79 @@ class TweetsViewController: UIViewController {
         User.currentUser?.logout()
     }
     
+    @IBAction func onRetweet(_ sender: UIButton) {
+        let button = sender
+        let view = button.superview!
+        let cell = view.superview as! TweetCell
+        let indexPath = tableView.indexPath(for: cell)
+        let tweet = tweets![indexPath!.row]
+        let path = tweet.id
+        let retweeted = tweet.retweeted
+        
+        if retweeted == false {
+            TwitterClient.sharedInstance?.retweet(id: path!, params: nil) { (error) -> () in
+                print("Retweeting")
+                self.tweets![indexPath!.row].retweetCount = self.tweets![indexPath!.row].retweetCount! + 1
+                tweet.retweeted = true
+                cell.retweetButton.setImage(UIImage(named: "retweet_on"), for: UIControlState())
+                self.tableView.reloadData()
+            }
+        } else if retweeted ==  true {
+            TwitterClient.sharedInstance?.unretweet(id: path!, params: nil , completion: { (error) -> () in
+                print("Unretweeting")
+                self.tweets![indexPath!.row].retweetCount  = self.tweets![indexPath!.row].retweetCount! - 1
+                tweet.retweeted = false
+                cell.retweetButton.setImage(UIImage(named: "retweet_off"), for: UIControlState())
+                self.tableView.reloadData()
+            })
+        }
 
-    /*
+    }
+    
+    @IBAction func onFavourite(_ sender: UIButton) {
+        let button = sender
+        let view = button.superview!
+        let cell = view.superview as! TweetCell
+        let indexPath = tableView.indexPath(for: cell)
+        let tweet = tweets![indexPath!.row]
+        let path = tweet.id
+        let favorited = tweet.favorited
+        
+        if favorited == false {
+            TwitterClient.sharedInstance?.favorite(id: path!, params: nil) { (error) -> () in
+                print("Favoriting")
+                self.tweets![indexPath!.row].favoriteCount = self.tweets![indexPath!.row].favoriteCount! + 1
+                tweet.favorited = true
+                cell.favoritesButton.setImage(UIImage(named: "like_on"), for: UIControlState())
+                self.tableView.reloadData()
+            }
+        } else if favorited ==  true {
+            TwitterClient.sharedInstance?.unfavorite(id: path!, params: nil , completion: { (error) -> () in
+                print("Unfavoriting")
+                self.tweets![indexPath!.row].favoriteCount  = self.tweets![indexPath!.row].favoriteCount! - 1
+                tweet.favorited = false
+                cell.favoritesButton.setImage(UIImage(named: "like_off"), for: UIControlState())
+                self.tableView.reloadData()
+            })
+        }
+
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if (segue.identifier == "tweetDetailSeque") {
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPath(for: cell)
+            let tweet = tweets![indexPath!.row]
+            
+            let vc = segue.destination as! TweetDetailViewController
+            vc.tweet = tweet
+        }
     }
-    */
-
 }
 
 extension TweetsViewController: UITableViewDelegate, UITableViewDataSource {
