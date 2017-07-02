@@ -31,6 +31,7 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
     
     func reply(escapedTweet: String, statusID: Int, params: NSDictionary?, completion: @escaping (_ error: NSError?) -> () ){
+        
         post("1.1/statuses/update.json?in_reply_to_status_id=\(statusID)&status=\(escapedTweet)", parameters: params, success: { (operation: URLSessionDataTask!, response: Any?) -> Void in
             print("Replied: \(escapedTweet)")
             completion(nil)
@@ -41,13 +42,15 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
     
     func compose(escapedTweet: String, params: NSDictionary?, completion: @escaping (_ error: NSError?) -> () ){
-        post("1.1/statuses/update.json?status=\(escapedTweet)", parameters: params, success: { (operation: URLSessionDataTask!, response: Any?) -> Void in
+        post("1.1/statuses/update.json?status=\(escapedTweet)", parameters: params, progress: { (Progress) in
+            
+        }, success: { (operation: URLSessionDataTask!, response: Any?) in
             print("Tweeted: \(escapedTweet)")
             completion(nil)
-        }, failure: { (operation: URLSessionDataTask?, error: Error?) -> Void in
-            print("Couldn't compose: \(String(describing: error?.localizedDescription))")
+        }) { (operation: URLSessionDataTask?, error: Error) in
+            print("Couldn't compose: \(String(describing: error.localizedDescription))")
             completion(error as NSError?)
-        })
+        }
     }
 
     func handleOpenUrl(url: URL) {
